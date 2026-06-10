@@ -1,0 +1,100 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Mobile App Redesign",
+      "owner": "Sarah Chen",
+      "status": "Active",
+      "recentActivity": "Updated 2 hours ago",
+      "priority": "High"
+    },
+    {
+      "id": 2,
+      "name": "Backend Infrastructure",
+      "owner": "James Rodriguez",
+      "status": "Active",
+      "recentActivity": "Updated 1 day ago",
+      "priority": "High"
+    },
+    {
+      "id": 3,
+      "name": "User Analytics Dashboard",
+      "owner": "Emma Wilson",
+      "status": "Active",
+      "recentActivity": "Started today",
+      "priority": "Medium"
+    },
+    {
+      "id": 4,
+      "name": "API Documentation Update",
+      "owner": "Michael Chen",
+      "status": "On Hold",
+      "recentActivity": "Updated 5 days ago",
+      "priority": "Medium"
+    },
+    {
+      "id": 5,
+      "name": "Q4 Performance Optimization",
+      "owner": "Lisa Park",
+      "status": "At Risk",
+      "recentActivity": "Updated 3 days ago",
+      "priority": "High"
+    },
+    {
+      "id": 6,
+      "name": "Customer Portal Enhancement",
+      "owner": "David Martinez",
+      "status": "Active",
+      "recentActivity": "Updated 6 hours ago",
+      "priority": "Medium"
+    },
+    {
+      "id": 7,
+      "name": "Database Migration",
+      "owner": "Amanda Thompson",
+      "status": "Completed",
+      "recentActivity": "Completed 2 weeks ago",
+      "priority": "High"
+    },
+    {
+      "id": 8,
+      "name": "Security Audit",
+      "owner": "Robert Lee",
+      "status": "On Hold",
+      "recentActivity": "Updated 1 week ago",
+      "priority": "High"
+    },
+    {
+      "id": 9,
+      "name": "Mobile Push Notifications",
+      "owner": "Jessica Brown",
+      "status": "Active",
+      "recentActivity": "Updated 12 hours ago",
+      "priority": "Low"
+    },
+    {
+      "id": 10,
+      "name": "Design System v2",
+      "owner": "Oliver Zhang",
+      "status": "Completed",
+      "recentActivity": "Completed 3 weeks ago",
+      "priority": "Medium"
+    },
+    {
+      "id": 11,
+      "name": "Payment Gateway Integration",
+      "owner": "Sophia Anderson",
+      "status": "At Risk",
+      "recentActivity": "Updated yesterday",
+      "priority": "High"
+    },
+    {
+      "id": 12,
+      "name": "DevOps Pipeline Enhancement",
+      "owner": "Marcus Johnson",
+      "status": "Active",
+      "recentActivity": "Updated 4 hours ago",
+      "priority": "Low"
+    }
+  ]
+}

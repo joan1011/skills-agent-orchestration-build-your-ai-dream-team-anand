@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Pulse</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="dashboard" aria-label="Project Pulse Dashboard">
+        <div class="dashboard-header">
+            <h1>Project Pulse</h1>
+            <p class="dashboard-subtitle">Track and manage all project activities</p>
+        </div>
+        <div class="projects-container" id="projects-container" aria-live="polite" aria-label="Projects list">
+            <!-- Project cards will be rendered here by JavaScript -->
+        </div>
+    </main>
+
+    <script>
+        // Load and render project data
+        async function loadProjects() {
+            try {
+                const response = await fetch('project-data.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load project data');
+                }
+                const data = await response.json();
+                renderProjects(data.projects);
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                const container = document.getElementById('projects-container');
+                container.innerHTML = '<div class="error-message">Failed to load projects. Please refresh the page.</div>';
+            }
+        }
+
+        // Render project cards
+        function renderProjects(projects) {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = '';
+
+            projects.forEach(project => {
+                const card = createProjectCard(project);
+                container.appendChild(card);
+            });
+        }
+
+        // Create a project card element
+        function createProjectCard(project) {
+            const card = document.createElement('article');
+            card.className = 'project-card';
+            card.setAttribute('aria-label', `${project.name} project, status: ${project.status}`);
+
+            const statusColor = getStatusColor(project.status);
+            const priorityColor = getPriorityColor(project.priority);
+
+            card.innerHTML = `
+                <div class="card-header">
+                    <h2 class="card-title">${escapeHtml(project.name)}</h2>
+                    <p class="card-owner" aria-label="Project owner">${escapeHtml(project.owner)}</p>
+                </div>
+                <div class="card-content">
+                    <div class="card-badges">
+                        <span class="status-badge" style="background-color: ${statusColor}; color: ${getStatusTextColor(project.status)}" aria-label="Status">
+                            ${escapeHtml(project.status)}
+                        </span>
+                        <span class="priority-badge" style="background-color: ${priorityColor}; color: white" aria-label="Priority">
+                            ${escapeHtml(project.priority)} Priority
+                        </span>
+                    </div>
+                    <div class="card-activity" aria-label="Recent activity">
+                        <span class="activity-icon">📅</span>
+                        <span class="activity-text">${escapeHtml(project.recentActivity)}</span>
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        // Get status color based on status value
+        function getStatusColor(status) {
+            const colors = {
+                'Active': '#d4f4d9',
+                'On Hold': '#fff3cd',
+                'Completed': '#e9ecef',
+                'At Risk': '#f8d7da'
+            };
+            return colors[status] || '#e0e0e0';
+        }
+
+        // Get status text color based on status value
+        function getStatusTextColor(status) {
+            const colors = {
+                'Active': '#155724',
+                'On Hold': '#856404',
+                'Completed': '#383d41',
+                'At Risk': '#721c24'
+            };
+            return colors[status] || '#1a1a1a';
+        }
+
+        // Get priority color based on priority value
+        function getPriorityColor(priority) {
+            const colors = {
+                'High': '#e74c3c',
+                'Medium': '#f39c12',
+                'Low': '#27ae60'
+            };
+            return colors[priority] || '#95a5a6';
+        }
+
+        // Escape HTML special characters for security
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Load projects when DOM is ready
+        document.addEventListener('DOMContentLoaded', loadProjects);
+    </script>
+</body>
+</html>
